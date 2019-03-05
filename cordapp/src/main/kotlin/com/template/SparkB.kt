@@ -24,11 +24,11 @@ object SparkB {
         val cordaRPCOps = rpcConnectionB.proxy
 
         Spark.port(2345)
+        Spark.staticFileLocation("/spark")
 
         Spark.get("/"
         ) { req, _ ->
-
-            val vaultData = cordaRPCOps.vaultQuery(StateContract.IOUState::class.java)
+            val vaultData = cordaRPCOps.vaultQuery(StateContract.WindState::class.java)
 
             val model = HashMap<String, Any>()
 
@@ -36,7 +36,7 @@ object SparkB {
 
             model["status"] = statusArray
 
-            freeMarkerEngine.render(ModelAndView(model, "sparkB.ftl"))
+            freeMarkerEngine.render(ModelAndView(model, "spark.ftl"))
         }
 
     }

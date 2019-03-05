@@ -9,9 +9,9 @@ import net.corda.core.transactions.LedgerTransaction
 // ************
 // * Contract *
 // ************
-class IOUContract : Contract {
+class WindContract : Contract {
     companion object {
-        const val ID = "com.template.IOUContract"
+        const val ID = "com.template.WindContract"
     }
 
     // Our Create command.
@@ -19,19 +19,16 @@ class IOUContract : Contract {
     @Suspendable
     override fun verify(tx: LedgerTransaction) {
         //val command = tx.commands.requireSingleCommand<Create>()
-
         requireThat {
         }
     }
 }
 
-// *********
-// * State *
-// *********
+
 object StateContract {
     @Suspendable
     @CordaSerializable
-    class IOUState(val status: String,
+    class WindState(val status: String,
                    val lender: Party,
                    val borrow: Party) : ContractState {
         override val participants get() = listOf(lender, borrow)
